@@ -35,8 +35,8 @@ app.get(getRoute, (req, res) => {
 });
 
 app.post(postRoute, (req, res) => {
-  const { date, temperature, userResponse } = req.body;
-  projectData = { date, temperature, userResponse };
+  const { date, temp, userResponse } = req.body;
+  projectData = { date, temp, userResponse };
   res.send(projectData);
   console.log("recieved data: ", projectData);
 });
