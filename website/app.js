@@ -35,7 +35,7 @@ const postFetch = async (url, data) => {
   }
 };
 
-document.getElementById("generate").addEventListener("click", async () => {
+const process = async () => {
     const zipCode = document.getElementById('zip').value;
     const url = `${apiBaseUrl}${zipCode},pl&appid=${key}`;
     const apiRes = await getFetch(url);
@@ -49,4 +49,6 @@ document.getElementById("generate").addEventListener("click", async () => {
 
     const postRes = await postFetch(postUrl, dataToSend);
     console.log("sent data: ", postRes);
-  });
+  }
+
+document.getElementById("generate").addEventListener("click", process);
