@@ -35,6 +35,18 @@ const postFetch = async (url, data) => {
   }
 };
 
+const updateUI = async () => {
+    const data= await getFetch(getUrl);
+    console.log('received data: ', data);
+    const {date, temp, userResponse} = data;
+
+    document.getElementById('date').innerText = date;
+    document.getElementById('temp').innerText = temp;
+    document.getElementById('content').innerText = userResponse;
+
+    console.log("UI updated");
+}
+
 const process = async () => {
     const zipCode = document.getElementById('zip').value;
     const url = `${apiBaseUrl}${zipCode},pl&appid=${key}`;
@@ -49,6 +61,8 @@ const process = async () => {
 
     const postRes = await postFetch(postUrl, dataToSend);
     console.log("sent data: ", postRes);
+
+    updateUI();    
   }
 
 document.getElementById("generate").addEventListener("click", process);
