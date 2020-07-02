@@ -36,33 +36,33 @@ const postFetch = async (url, data) => {
 };
 
 const updateUI = async () => {
-    const data= await getFetch(getUrl);
-    console.log('received data: ', data);
-    const {date, temp, userResponse} = data;
+  const data = await getFetch(getUrl);
+  console.log("received data: ", data);
+  const { date, temp, userResponse } = data;
 
-    document.getElementById('date').innerText = date;
-    document.getElementById('temp').innerText = temp;
-    document.getElementById('content').innerText = userResponse;
+  document.getElementById("date").innerText = date;
+  document.getElementById("temp").innerText = temp;
+  document.getElementById("content").innerText = userResponse;
 
-    console.log("UI updated");
-}
+  console.log("UI updated");
+};
 
 const process = async () => {
-    const zipCode = document.getElementById('zip').value;
-    const url = `${apiBaseUrl}${zipCode},pl&appid=${key}`;
-    const apiRes = await getFetch(url);
-    console.log("received from API: ", apiRes);
-    
-    const date = newDate;
-    const {temp} = apiRes.main;
-    const userResponse = document.getElementById('feelings').value;
+  const zipCode = document.getElementById("zip").value;
+  const url = `${apiBaseUrl}${zipCode},pl&appid=${key}`;
+  const apiRes = await getFetch(url);
+  console.log("received from API: ", apiRes);
 
-    const dataToSend = {date, temp, userResponse};
+  const date = newDate;
+  const { temp } = apiRes.main;
+  const userResponse = document.getElementById("feelings").value;
 
-    const postRes = await postFetch(postUrl, dataToSend);
-    console.log("sent data: ", postRes);
+  const dataToSend = { date, temp, userResponse };
 
-    updateUI();    
-  }
+  const postRes = await postFetch(postUrl, dataToSend);
+  console.log("sent data: ", postRes);
+
+  updateUI();
+};
 
 document.getElementById("generate").addEventListener("click", process);
