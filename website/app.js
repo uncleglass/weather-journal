@@ -39,7 +39,7 @@ const process = async () => {
     const zipCode = document.getElementById('zip').value;
     const url = `${apiBaseUrl}${zipCode},pl&appid=${key}`;
     const apiRes = await getFetch(url);
-    console.log("recided from API: ", apiRes);
+    console.log("received from API: ", apiRes);
     
     const date = newDate;
     const {temp} = apiRes.main;

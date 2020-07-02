@@ -38,5 +38,5 @@ app.post(postRoute, (req, res) => {
   const { date, temp, userResponse } = req.body;
   projectData = { date, temp, userResponse };
   res.send(projectData);
-  console.log("recieved data: ", projectData);
+  console.log("received data: ", projectData);
 });
